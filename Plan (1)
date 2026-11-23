@@ -1,0 +1,278 @@
+  (:action tomar
+    :parameters (bot t1 barra)
+    :precondition
+      (and
+        (robot-en bot barra)
+        (taza-en t1 barra)
+        (mano-libre bot)
+      )
+    :effect
+      (and
+        (sosteniendo bot t1)
+        (not
+          (taza-en t1 barra)
+        )
+        (not
+          (mano-libre bot)
+        )
+      )
+  )
+
+    (:action mover
+    :parameters (bot barra cafetera)
+    :precondition
+      (and
+        (robot-en bot barra)
+        (conectado barra cafetera)
+      )
+    :effect
+      (and
+        (robot-en bot cafetera)
+        (not
+          (robot-en bot barra)
+        )
+      )
+  )
+
+
+  (:action servir-cafe
+    :parameters (bot t1 cafetera)
+    :precondition
+      (and
+        (robot-en bot cafetera)
+        (estacion-cafe cafetera)
+        (sosteniendo bot t1)
+        (vacia t1)
+      )
+    :effect
+      (and
+        (con-cafe t1)
+        (not
+          (vacia t1)
+        )
+      )
+  )
+
+
+  (:action mover
+    :parameters (bot cafetera lechera)
+    :precondition
+      (and
+        (robot-en bot cafetera)
+        (conectado cafetera lechera)
+      )
+    :effect
+      (and
+        (robot-en bot lechera)
+        (not
+          (robot-en bot cafetera)
+        )
+      )
+  )
+
+
+  (:action agregar-leche
+    :parameters (bot t1 lechera)
+    :precondition
+      (and
+        (robot-en bot lechera)
+        (estacion-leche lechera)
+        (sosteniendo bot t1)
+        (con-cafe t1)
+      )
+    :effect
+      (con-leche t1)
+  )
+
+
+  (:action mover
+    :parameters (bot lechera mesa1)
+    :precondition
+      (and
+        (robot-en bot lechera)
+        (conectado lechera mesa1)
+      )
+    :effect
+      (and
+        (robot-en bot mesa1)
+        (not
+          (robot-en bot lechera)
+        )
+      )
+  )
+
+
+  (:action soltar
+    :parameters (bot t1 mesa1)
+    :precondition
+      (and
+        (robot-en bot mesa1)
+        (sosteniendo bot t1)
+      )
+    :effect
+      (and
+        (taza-en t1 mesa1)
+        (mano-libre bot)
+        (not
+          (sosteniendo bot t1)
+        )
+      )
+  )
+
+
+  (:action mover
+    :parameters (bot mesa1 lechera)
+    :precondition
+      (and
+        (robot-en bot mesa1)
+        (conectado mesa1 lechera)
+      )
+    :effect
+      (and
+        (robot-en bot lechera)
+        (not
+          (robot-en bot mesa1)
+        )
+      )
+  )
+
+
+  (:action mover
+    :parameters (bot lechera cafetera)
+    :precondition
+      (and
+        (robot-en bot lechera)
+        (conectado lechera cafetera)
+      )
+    :effect
+      (and
+        (robot-en bot cafetera)
+        (not
+          (robot-en bot lechera)
+        )
+      )
+  )
+
+
+  (:action mover
+    :parameters (bot cafetera barra)
+    :precondition
+      (and
+        (robot-en bot cafetera)
+        (conectado cafetera barra)
+      )
+    :effect
+      (and
+        (robot-en bot barra)
+        (not
+          (robot-en bot cafetera)
+        )
+      )
+  )
+
+  (:action tomar
+    :parameters (bot t2 barra)
+    :precondition
+      (and
+        (robot-en bot barra)
+        (taza-en t2 barra)
+        (mano-libre bot)
+      )
+    :effect
+      (and
+        (sosteniendo bot t2)
+        (not
+          (taza-en t2 barra)
+        )
+        (not
+          (mano-libre bot)
+        )
+      )
+  )
+
+
+  (:action mover
+    :parameters (bot barra cafetera)
+    :precondition
+      (and
+        (robot-en bot barra)
+        (conectado barra cafetera)
+      )
+    :effect
+      (and
+        (robot-en bot cafetera)
+        (not
+          (robot-en bot barra)
+        )
+      )
+  )
+
+
+  (:action servir-cafe
+    :parameters (bot t2 cafetera)
+    :precondition
+      (and
+        (robot-en bot cafetera)
+        (estacion-cafe cafetera)
+        (sosteniendo bot t2)
+        (vacia t2)
+      )
+    :effect
+      (and
+        (con-cafe t2)
+        (not
+          (vacia t2)
+        )
+      )
+  )
+
+  (:action mover
+    :parameters (bot cafetera lechera)
+    :precondition
+      (and
+        (robot-en bot cafetera)
+        (conectado cafetera lechera)
+      )
+    :effect
+      (and
+        (robot-en bot lechera)
+        (not
+          (robot-en bot cafetera)
+        )
+      )
+  )
+
+
+  (:action mover
+    :parameters (bot lechera mesa2)
+    :precondition
+      (and
+        (robot-en bot lechera)
+        (conectado lechera mesa2)
+      )
+    :effect
+      (and
+        (robot-en bot mesa2)
+        (not
+          (robot-en bot lechera)
+        )
+      )
+  )
+
+
+  (:action soltar
+    :parameters (bot t2 mesa2)
+    :precondition
+      (and
+        (robot-en bot mesa2)
+        (sosteniendo bot t2)
+      )
+    :effect
+      (and
+        (taza-en t2 mesa2)
+        (mano-libre bot)
+        (not
+          (sosteniendo bot t2)
+        )
+      )
+  )
